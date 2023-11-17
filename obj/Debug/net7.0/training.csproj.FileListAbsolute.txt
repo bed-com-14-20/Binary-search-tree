@@ -1,0 +1,14 @@
+C:\Users\Squa\Desktop\projects\training\bin\Debug\net7.0\training.exe
+C:\Users\Squa\Desktop\projects\training\bin\Debug\net7.0\training.deps.json
+C:\Users\Squa\Desktop\projects\training\bin\Debug\net7.0\training.runtimeconfig.json
+C:\Users\Squa\Desktop\projects\training\bin\Debug\net7.0\training.dll
+C:\Users\Squa\Desktop\projects\training\bin\Debug\net7.0\training.pdb
+C:\Users\Squa\Desktop\projects\training\obj\Debug\net7.0\training.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Squa\Desktop\projects\training\obj\Debug\net7.0\training.AssemblyInfoInputs.cache
+C:\Users\Squa\Desktop\projects\training\obj\Debug\net7.0\training.AssemblyInfo.cs
+C:\Users\Squa\Desktop\projects\training\obj\Debug\net7.0\training.csproj.CoreCompileInputs.cache
+C:\Users\Squa\Desktop\projects\training\obj\Debug\net7.0\training.dll
+C:\Users\Squa\Desktop\projects\training\obj\Debug\net7.0\refint\training.dll
+C:\Users\Squa\Desktop\projects\training\obj\Debug\net7.0\training.pdb
+C:\Users\Squa\Desktop\projects\training\obj\Debug\net7.0\training.genruntimeconfig.cache
+C:\Users\Squa\Desktop\projects\training\obj\Debug\net7.0\ref\training.dll
