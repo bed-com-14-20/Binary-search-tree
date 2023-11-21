@@ -1,3 +1,5 @@
+ using System;
+
 public class Node<T>
 {
     public T Data { get; set; }
@@ -7,7 +9,5 @@ public class Node<T>
     public Node(T data)
     {
         Data = data;
-        Left = null;
-        Right = null;
     }
 }

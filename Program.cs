@@ -1,73 +1,84 @@
-﻿ using System;
-
-class Program
+﻿ class Program
 {
     static void Main()
     {
-        // Create a BinaryTree of integers
+        // Create an instance of BinaryTree to perform operations on a binary tree of integers
         BinaryTree<int> binaryTree = new BinaryTree<int>();
-
-        // Prompt the user to enter values
-        Console.WriteLine("Enter values to insert into the binary tree (enter a non-integer to stop):");
 
         while (true)
         {
-            Console.Write("Enter an integer value (or a non-integer to stop): ");
-            string input = Console.ReadLine();
+            // Display menu for binary tree operations
+            Console.WriteLine("Binary Tree Operations please select 1 option at a time:");
+            Console.WriteLine("1. Insert a value in the tree");
+            Console.WriteLine("2. Search for a value in the tree");
+            Console.WriteLine("3. Remove a value from the tree");
+            Console.WriteLine("4. Print Inorder and Postorder Traversal");
+            Console.WriteLine("5. Exit.........");
 
-            if (int.TryParse(input, out int value))
+            // Prompt the user to enter their choice
+            Console.Write("Enter your choice (1-5): Please enter within given range ");
+            string choice = Console.ReadLine();
+
+            // Perform actions based on user's choice
+            switch (choice)
             {
-                // Insert the user-entered value into the binary tree
-                binaryTree.Insert(value);
-            }
-            else
-            {
-                // Stop input if the user enters a non-integer value
-                break;
-            }
-        }
+                case "1":
+                    // Insert operation
+                    Console.Write("Enter an integer value to insert into the Tree: ");
+                    if (int.TryParse(Console.ReadLine(), out int insertValue))
+                        binaryTree.Insert(insertValue);
+                    else
+                        Console.WriteLine("Invalid input for insertion please TRY again.");
+                    break;
 
-        // Print inorder and postorder traversals
-        binaryTree.PrintInorder();
-        binaryTree.PrintPostorder();
+                case "2":
+                    // Search operation
+                    Console.Write("Enter a value to search in the binary tree: ");
+                    if (int.TryParse(Console.ReadLine(), out int searchKey))
+                    {
+                        if (binaryTree.Search(searchKey, out Node<int> foundNode, out Node<int> parentNode))
+                        {
+                            Console.WriteLine($"Node {searchKey} found.");
+                            Console.WriteLine(parentNode != null ? $"Immediate parent: {parentNode.Data}" : "No parent");
+                            Console.WriteLine(foundNode.Left != null ? $"Left child: {foundNode.Left.Data}" : "No left child");
+                            Console.WriteLine(foundNode.Right != null ? $"Right child: {foundNode.Right.Data}" : "No right child");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Node {searchKey} not found.");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input for search key.");
+                    }
+                    break;
 
-        // Prompt the user to search for a node
-        Console.Write("Enter a value to search in the binary tree: ");
-        if (int.TryParse(Console.ReadLine(), out int searchKey))
-        {
-            if (binaryTree.Search(searchKey, out Node<int> foundNode, out Node<int> parentNode))
-            {
-                Console.WriteLine($"Node {searchKey} found.");
-                if (parentNode != null)
-                    Console.WriteLine($"Immediate parent: {parentNode.Data}");
-                if (foundNode.Left != null)
-                    Console.WriteLine($"Left child: {foundNode.Left.Data}");
-                if (foundNode.Right != null)
-                    Console.WriteLine($"Right child: {foundNode.Right.Data}");
+                case "3":
+                    // Remove operation
+                    Console.Write("Enter a value to remove from the binary tree: ");
+                    if (int.TryParse(Console.ReadLine(), out int removeKey))
+                        binaryTree.Remove(removeKey);
+                    else
+                        Console.WriteLine("Invalid input for removal key.");
+                    break;
+
+                case "4":
+                    // Print Inorder and Postorder Traversal
+                    binaryTree.PrintInorder();
+                    binaryTree.PrintPostorder();
+                    break;
+
+                case "5":
+                    // Exit the program
+                    Console.WriteLine("Exiting the program.");
+                    return;
+
+                default:
+                    // Invalid choice
+                    Console.WriteLine("Invalid choice. Please enter a number between 1 and 5.");
+                    break;
             }
-            else
-            {
-                Console.WriteLine($"Node {searchKey} not found.");
-            }
-        }
-        else
-        {
-            Console.WriteLine("Invalid input for search key.");
-        }
-
-        // Prompt the user to remove a node
-        Console.Write("Enter a value to remove from the binary tree: ");
-        if (int.TryParse(Console.ReadLine(), out int removeKey))
-        {
-            binaryTree.Remove(removeKey);
-
-            // Print inorder and postorder traversals after removal
-            binaryTree.PrintInorder();
-            binaryTree.PrintPostorder();
-        }
-        else
-        {
-            Console.WriteLine("Invalid input for removal key.");
         }
     }
 }
