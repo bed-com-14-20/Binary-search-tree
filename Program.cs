@@ -12,14 +12,15 @@
             Console.WriteLine("1. Insert a value in the tree");
             Console.WriteLine("2. Search for a value in the tree");
             Console.WriteLine("3. Remove a value from the tree");
-            Console.WriteLine("4. Print Inorder and Postorder Traversal");
+            Console.WriteLine("4. Print In--order and Post--order Traversal");
             Console.WriteLine("5. Exit.........");
 
             // Prompt the user to enter their choice
             Console.Write("Enter your choice (1-5): Please enter within given range ");
             string choice = Console.ReadLine();
 
-            // Perform actions based on user's choice
+            // Perform actions based on user's choice 
+            // switch statement
             switch (choice)
             {
                 case "1":
@@ -31,6 +32,7 @@
                         Console.WriteLine("Invalid input for insertion please TRY again.");
                     break;
 
+
                 case "2":
                     // Search operation
                     Console.Write("Enter a value to search in the binary tree: ");
@@ -38,7 +40,7 @@
                     {
                         if (binaryTree.Search(searchKey, out Node<int> foundNode, out Node<int> parentNode))
                         {
-                            Console.WriteLine($"Node {searchKey} found.");
+                            Console.WriteLine($"Node {searchKey} succesfully found.");
                             Console.WriteLine(parentNode != null ? $"Immediate parent: {parentNode.Data}" : "No parent");
                             Console.WriteLine(foundNode.Left != null ? $"Left child: {foundNode.Left.Data}" : "No left child");
                             Console.WriteLine(foundNode.Right != null ? $"Right child: {foundNode.Right.Data}" : "No right child");
@@ -60,7 +62,7 @@
                     if (int.TryParse(Console.ReadLine(), out int removeKey))
                         binaryTree.Remove(removeKey);
                     else
-                        Console.WriteLine("Invalid input for removal key.");
+                        Console.WriteLine("Invalid input for removal key or The value does not found.");
                     break;
 
                 case "4":

@@ -7,6 +7,7 @@
         root = InsertRec(root, data);
     }
 
+// To insert a value in the tree,,, make sure that the node is null first 
     private Node<T> InsertRec(Node<T> node, T data)
     {
         if (node == null)
@@ -20,6 +21,7 @@
 
         return node;
     }
+//search 
 
     public bool Search(T data, out Node<T> foundNode, out Node<T> parentNode)
     {
@@ -43,6 +45,8 @@
         parentNode = node;
         return SearchRec(compareResult < 0 ? node.Left : node.Right, data, ref foundNode, ref parentNode);
     }
+
+// remove
 
     public void Remove(T data)
     {
@@ -84,6 +88,8 @@
         return minValue;
     }
 
+// in order
+
     private void InorderTraversal(Node<T> node, Action<T> action)
     {
         if (node != null)
@@ -93,6 +99,17 @@
             InorderTraversal(node.Right, action);
         }
     }
+
+//printing in order
+
+    public void PrintInorder()
+    {
+        Console.Write("Inorder Traversal: ");
+        InorderTraversal(root, data => Console.Write($"{data} "));
+        Console.WriteLine();
+    }
+
+// post oder
 
     private void PostorderTraversal(Node<T> node, Action<T> action)
     {
@@ -104,12 +121,7 @@
         }
     }
 
-    public void PrintInorder()
-    {
-        Console.Write("Inorder Traversal: ");
-        InorderTraversal(root, data => Console.Write($"{data} "));
-        Console.WriteLine();
-    }
+// print post order
 
     public void PrintPostorder()
     {
