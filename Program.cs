@@ -10,16 +10,17 @@
         while (true)
         {
             // Display menu for binary tree operations
-            Console.WriteLine("Binary Tree Operations please select 1 option at a time:");
+            Console.WriteLine("\n");
+            Console.WriteLine("Binary Tree Operations please select 1 option at a time:\n ");
             Console.WriteLine("1. Insert a value in the Tree");
             Console.WriteLine("2. Search for a value in the Tree");
             Console.WriteLine("3. Remove a value from the Tree");
             Console.WriteLine("4. Print In--order");
             Console.WriteLine("5. Print post--order");
-            Console.WriteLine("6. Exit The program");
+            Console.WriteLine("6. Exit The program \n ");
 
             // Prompt the user to enter their choice
-            Console.Write("Enter your choice (1-6): Please enter within given range ");
+            Console.Write("Enter your choice (1-6): Please enter within given range : ");
             string selection = Console.ReadLine();
 
             // Perform actions based on user's choice 
@@ -76,10 +77,11 @@
                     Console.Write("Enter a value to remove from the binary tree: ");
                     if (int.TryParse(Console.ReadLine(), out int removeValue)){
                         binaryTree.Remove(removeValue );
-                            
+
                         string Removed_Node = removeValue +    " successfully removed from the Tree";
                         Console.WriteLine(Removed_Node);
                     }
+                    
                     else
 
                         Console.WriteLine("Invalid input for removal The value does not found.");
