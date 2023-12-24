@@ -2,35 +2,35 @@
 {
     private Node<T> root;
 
-    public void Insert(T data)
+    public void Insert_Value(T data)
     {
-        root = InsertRec(root, data);
+        root = InsertOperation(root, data);
     }
 
 // To insert a value in the tree,,, make sure that the node is null first 
-    private Node<T> InsertRec(Node<T> node, T data)
+    private Node<T> InsertOperation(Node<T> node, T data)
     {
         if (node == null)
             return new Node<T>(data);
 
         int compareResult = data.CompareTo(node.Data);
         if (compareResult < 0)
-            node.Left = InsertRec(node.Left, data);
+            node.Left = InsertOperation(node.Left, data);
         else if (compareResult > 0)
-            node.Right = InsertRec(node.Right, data);
+            node.Right = InsertOperation(node.Right, data);
 
         return node;
     }
-//search 
+//search for a node 
 
-    public bool Search(T data, out Node<T> foundNode, out Node<T> parentNode)
+    public bool Search_Node(T data, out Node<T> Available_Node, out Node<T> parentNode)
     {
-        foundNode = null;
+        Available_Node = null;
         parentNode = null;
-        return SearchRec(root, data, ref foundNode, ref parentNode);
+        return SearchOperation(root, data, ref Available_Node, ref parentNode); 
     }
 
-    private bool SearchRec(Node<T> node, T data, ref Node<T> foundNode, ref Node<T> parentNode)
+    private bool SearchOperation(Node<T> node, T data, ref Node<T> Available_Node, ref Node<T> parentNode)
     {
         if (node == null)
             return false;
@@ -38,31 +38,31 @@
         int compareResult = data.CompareTo(node.Data);
         if (compareResult == 0)
         {
-            foundNode = node;
+            Available_Node = node;
             return true;
         }
 
         parentNode = node;
-        return SearchRec(compareResult < 0 ? node.Left : node.Right, data, ref foundNode, ref parentNode);
+        return SearchOperation(compareResult < 0 ? node.Left : node.Right, data, ref Available_Node, ref parentNode);
     }
 
 // remove
 
     public void Remove(T data)
     {
-        root = RemoveRec(root, data);
+        root = Remove_Function(root, data);
     }
 
-    private Node<T> RemoveRec(Node<T> node, T data)
+    private Node<T> Remove_Function(Node<T> node, T data)
     {
         if (node == null)
             return node;
 
-        int compareResult = data.CompareTo(node.Data);
-        if (compareResult < 0)
-            node.Left = RemoveRec(node.Left, data);
-        else if (compareResult > 0)
-            node.Right = RemoveRec(node.Right, data);
+        int compareOutcome = data.CompareTo(node.Data);
+        if (compareOutcome < 0)
+            node.Left = Remove_Function(node.Left, data);
+        else if (compareOutcome > 0)
+            node.Right = Remove_Function(node.Right, data);
         else
         {
             if (node.Left == null)
@@ -70,14 +70,15 @@
             else if (node.Right == null)
                 return node.Left;
 
-            node.Data = MinValue(node.Right);
-            node.Right = RemoveRec(node.Right, node.Data);
+            node.Data = MinimumValue(node.Right);
+            node.Right = Remove_Function(node.Right, node.Data);
         }
 
-        return node;
+        return node ;
+        
     }
 
-    private T MinValue(Node<T> node)
+    private T MinimumValue(Node<T> node)
     {
         T minValue = node.Data;
         while (node.Left != null)
@@ -88,15 +89,15 @@
         return minValue;
     }
 
-// in order
+// in order traversal it visit left child first, the root and right child
 
-    private void InorderTraversal(Node<T> node, Action<T> action)
+    private void InorderTraversal(Node<T> node, Action<T> response)
     {
         if (node != null)
         {
-            InorderTraversal(node.Left, action);
-            action(node.Data);
-            InorderTraversal(node.Right, action);
+            InorderTraversal(node.Left, response);
+            response(node.Data);
+            InorderTraversal(node.Right, response);
         }
     }
 
@@ -104,28 +105,28 @@
 
     public void PrintInorder()
     {
-        Console.Write("Inorder Traversal: ");
+        Console.Write("Inorder Traversal Result is: ");
         InorderTraversal(root, data => Console.Write($"{data} "));
         Console.WriteLine();
     }
 
-// post oder
+// post oder, thios visit the left child then right and root last
 
-    private void PostorderTraversal(Node<T> node, Action<T> action)
+    private void PostorderTraversal(Node<T> node, Action<T> result)
     {
         if (node != null)
         {
-            PostorderTraversal(node.Left, action);
-            PostorderTraversal(node.Right, action);
-            action(node.Data);
+            PostorderTraversal(node.Left, result);
+            PostorderTraversal(node.Right, result);
+            result(node.Data);
         }
     }
 
-// print post order
+// printing post order
 
     public void PrintPostorder()
     {
-        Console.Write("Postorder Traversal: ");
+        Console.Write("Postorder Traversal Result is : ");
         PostorderTraversal(root, data => Console.Write($"{data} "));
         Console.WriteLine();
     }
